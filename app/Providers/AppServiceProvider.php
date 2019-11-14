@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Repositories\blog\base\IBlogRepository;
+use App\Repositories\blog\MySqlBlogRepository as BlogRepository;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(IBlogRepository::class, BlogRepository::class);
     }
 }
