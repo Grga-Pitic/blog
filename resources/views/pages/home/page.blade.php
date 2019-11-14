@@ -3,5 +3,5 @@
 @section('title', '- Home')
 
 @section('content')
-    @include('pages.parts.blogOnHomepage')
+    @include('pages.home.parts.blogOnHomepage')
 @endsection
