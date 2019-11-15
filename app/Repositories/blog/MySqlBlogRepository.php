@@ -11,7 +11,8 @@ DEFINE('TABLE_NAME', 'post');
 
 class MySqlBlogRepository implements IBlogRepository {
     public function getPostById(int $id){
-        return DB::table(TABLE_NAME)->where('id', $id)->first();
+        $result = DB::table(TABLE_NAME)->where('id', $id)->first();
+        return $this->createPostByRow($result);
     }
     public function getLatestPosts() {
         $result = DB::table(TABLE_NAME)->orderBy('published_at', 'desc')->take(2)->get();
