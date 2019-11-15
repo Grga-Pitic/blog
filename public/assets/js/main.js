@@ -506,3 +506,29 @@ $.scrollUp({
     
 })(jQuery);
 
+function getBlogList(page = 1, quantity = 0){
+    var url = '/blogs'
+    var params = page + '/';
+
+    params += $('#quantity option:selected').val();
+
+    if($('#sortby option:selected').val() == 'true'){
+        params += '?old-first=true';
+    }
+
+    history.pushState(null, null, url+'/'+params);
+
+//    alert(url+'/update/'+params);
+
+    $.ajax({
+        type:'GET',
+        url:url+'/update/'+params,
+        data: {},
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        },
+        success:function(data){
+            $("#post-list").html(data);
+        }
+    });
+}
