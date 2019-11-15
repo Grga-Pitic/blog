@@ -24,6 +24,6 @@ Route::get('/blogs/update/{p?}/{q?}', 'Ajax\PostListController@show')->where([
 ]);
 
 
-Route::get('/post/{id?}', 'Pages\PostController@show')->where([
+Route::get('/post/{id}', 'Pages\PostController@show')->where([
     'id' => '[0-9]+'
 ]);
