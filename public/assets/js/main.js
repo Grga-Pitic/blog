@@ -506,11 +506,11 @@ $.scrollUp({
     
 })(jQuery);
 
-function getBlogList(page = 1, quantity = 0){
+function getBlogList(page = 0, quantity = $('#quantity option:selected').val()){
     var url = '/blogs'
     var params = page + '/';
 
-    params += $('#quantity option:selected').val();
+    params += quantity;
 
     if($('#sortby option:selected').val() == 'true'){
         params += '?old-first=true';
