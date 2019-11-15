@@ -12,3 +12,8 @@
 */
 
 Route::get('/', 'Pages\HomepageController@show');
+
+Route::get('/blogs/{p?}/{q?}', 'Pages\BlogsController@show')->where([
+    'p' => '[0-9]+',
+    'q' => '[0-9]+'
+]);
