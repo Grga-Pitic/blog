@@ -14,6 +14,11 @@
 Route::get('/', 'Pages\HomepageController@show');
 
 Route::get('/blogs/{p?}/{q?}', 'Pages\BlogsController@show')->where([
-    'p' => '[0-9]+',
-    'q' => '[0-9]+'
+    'p' => '[0-9]+',   // page number
+    'q' => '[0-9]+'    // quantity of posts on a page
+]);
+
+Route::get('/blogs/update/{p?}/{q?}', 'Ajax\PostListController@show')->where([
+    'p' => '[0-9]+',   // page number
+    'q' => '[0-9]+'    // quantity of posts on a page
 ]);
