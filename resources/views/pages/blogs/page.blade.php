@@ -33,7 +33,7 @@
                     </div>
                     <!-- shop-sidebar end -->
                     <div class="filter-price-cont">
-                        <a class="add-to-cart-button" onclick="getBlogList({{$currentPage}}, {{$pageSize}})">
+                        <a class="add-to-cart-button" onclick="getBlogList()">
                             <span>ACCEPT</span>
                         </a>
                     </div>
