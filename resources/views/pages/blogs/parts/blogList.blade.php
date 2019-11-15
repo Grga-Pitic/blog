@@ -33,7 +33,9 @@
             <div class="col-lg-12 col-md-12">
                 <ul class="pagination-box">
                     @if($currentPage != 0)
-                        <li><a class="Previous" href="#"><i class="ion-chevron-left"></i></a>
+                        <li><a class="Previous" onclick="getBlogList({{$currentPage-1}}, {{$pageSize}})">
+                                <i class="ion-chevron-left"></i>
+                            </a>
                         </li>
                     @endif
                     @for($i = 0; $i < $currentPage; $i++)
@@ -44,7 +46,9 @@
                         <li><a onclick="getBlogList({{$i}}, {{$pageSize}})">{{$i+1}}</a></li>
                     @endfor
                     @if(($currentPage != $pagesQuantity-1) and ($pagesQuantity != 0))
-                        <li><a class="Next" href="#"><i class="ion-chevron-right"></i> </a>
+                        <li><a class="Next" onclick="getBlogList({{$currentPage+1}}, {{$pageSize}})">
+                                <i class="ion-chevron-right"></i>
+                            </a>
                         </li>
                     @endif
                 </ul>
