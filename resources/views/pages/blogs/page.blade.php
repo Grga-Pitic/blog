@@ -39,12 +39,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9 order-lg-2 order-1" id="post-list">
-                    @include('pages.blogs.parts.blogList', [
-                        'postList' => $postList,
-                        'currentPage' => $currentPage,
-                        'pagesQuantity' => $pagesQuantity,
-                        'pageSize' => $pageSize
-                    ])
+                    {!! $listHtmlCode !!}
                 </div>
             </div>
         </div>

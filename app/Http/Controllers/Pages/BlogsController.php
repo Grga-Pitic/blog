@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Pages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\blog\base\IBlogRepository;
-
-DEFINE ('DEFAULT_QUANTITY_ON_PAGE', 10);
+use App\Http\Controllers\Ajax\PostListController;
 
 class BlogsController extends Controller {
-    public function show(Request $request, $p = 0, $q = DEFAULT_QUANTITY_ON_PAGE){
+    public function show(Request $request, $p = 0, $q = PostListController::DEFAULT_QUANTITY_ON_PAGE){
 
         $container = app();
         $repository =  $container->make(IBlogRepository::class);
+        $listController = $container->make(PostListController::class);
 
         $parametersOfList = [
             'page' => $p,
@@ -28,12 +28,11 @@ class BlogsController extends Controller {
         $listOfPosts = $repository->getPostList($parametersOfList);
         $postsTotal  = $repository->getCount();
 
+        $listHtmlCode = $listController->show($request, $p, $q);
+
         return view('pages.blogs.page', [
-            'postList' => $listOfPosts,
-            'currentPage' => $p,
-            'pageSize' => $q,
             'isOldFirst' => $parametersOfList['oldFirst'],
-            'pagesQuantity' => $this->calculatePagesQuantity($q, $postsTotal)
+            'listHtmlCode' => $listHtmlCode
         ]);
     }
 

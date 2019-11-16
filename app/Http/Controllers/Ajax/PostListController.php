@@ -6,9 +6,10 @@ use App\Repositories\blog\base\IBlogRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-DEFINE ('DEFAULT_QUANTITY_ON_PAGE', 10);
-
 class PostListController extends Controller {
+
+    public const DEFAULT_QUANTITY_ON_PAGE = 10;
+
     public function show(Request $request, $p = 0, $q = DEFAULT_QUANTITY_ON_PAGE){
 
         $container = app();
