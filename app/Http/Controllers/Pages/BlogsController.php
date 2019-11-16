@@ -8,6 +8,14 @@ use App\Repositories\blog\base\IBlogRepository;
 use App\Http\Controllers\Ajax\PostListController;
 use PDOException;
 
+
+/**
+ * Class BlogsController
+ * @package App\Http\Controllers\Pages
+ *
+ * Контроллер страницы Blogs. Использует "субконтроллер" PostListController для получения HTML кода списка блогов.
+ *
+ */
 class BlogsController extends Controller {
     public function show(Request $request, $p = 0, $q = PostListController::DEFAULT_QUANTITY_ON_PAGE){
 

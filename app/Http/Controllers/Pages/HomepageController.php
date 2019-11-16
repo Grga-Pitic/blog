@@ -7,6 +7,13 @@ use PDOException;
 use App\Http\Controllers\Controller;
 use App\Repositories\blog\base\IBlogRepository;
 
+/**
+ * Class HomepageController
+ * @package App\Http\Controllers\Pages
+ *
+ * Контроллер главной страницы. Использует BlogRepository для получения последних блогов.
+ *
+ */
 class HomepageController extends Controller {
     public function show(Request $request){
         $container = app();

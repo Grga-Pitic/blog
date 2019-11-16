@@ -3,7 +3,13 @@
 
 namespace App\Models;
 
-
+/**
+ * Class PostModel
+ * @package App\Models
+ *
+ * Модель поста. Содержит в себе массив с данными и метод для их получения.
+ *
+ */
 class PostModel {
     private $data;
 
