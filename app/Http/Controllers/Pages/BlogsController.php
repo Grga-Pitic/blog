@@ -38,7 +38,7 @@ class BlogsController extends Controller {
                 'listHtmlCode' => $listHtmlCode
             ]);
         } catch (PDOException $e) {
-            return view('pages.DBError');
+            return view('errors.DBError');
         }
 
 

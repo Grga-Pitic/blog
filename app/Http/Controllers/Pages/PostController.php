@@ -16,7 +16,7 @@ class PostController extends Controller {
             $postModel = $repository->getPostByID($id);
             return view('pages.post.page', ['postModel' => $postModel]);
         } catch (PDOException $e) {
-            return view('pages.DBError');
+            return view('errors.DBError');
         } catch (\ErrorException $e) {
             abort(404);
         }

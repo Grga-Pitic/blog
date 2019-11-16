@@ -16,7 +16,7 @@ class HomepageController extends Controller {
             $latestPostsArray = $repository->getLatestPosts();
             return view('pages.home.page', ['latestPosts' => $latestPostsArray]);
         } catch (PDOException $e) {
-            return view('pages.DBError');
+            return view('errors.DBError');
         }
 
     }
