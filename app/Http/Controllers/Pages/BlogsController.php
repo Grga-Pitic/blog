@@ -28,7 +28,8 @@ class BlogsController extends Controller {
                 'isOldFirst' => $parametersOfList['oldFirst'],
                 'listHtmlCode' => $listHtmlCode
             ]);
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { // Т.к. конструктор запросов работает на основе PDO,
+                                    // ожидаем соответствующее исключение.
             return view('errors.DBError');
         }
     }

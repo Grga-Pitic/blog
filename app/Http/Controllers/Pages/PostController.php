@@ -15,9 +15,10 @@ class PostController extends Controller {
         try {
             $postModel = $repository->getPostByID($id);
             return view('pages.post.page', ['postModel' => $postModel]);
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { // Т.к. конструктор запросов работает на основе PDO,
+                                    // ожидаем соответствующее исключение.
             return view('errors.DBError');
-        } catch (\ErrorException $e) {
+        } catch (\ErrorException $e) { // Исключение возникает когда пост не найден.
             abort(404);
         }
         return view('pages.post.page');

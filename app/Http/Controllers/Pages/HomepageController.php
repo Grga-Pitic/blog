@@ -15,7 +15,8 @@ class HomepageController extends Controller {
         try {
             $latestPostsArray = $repository->getLatestPosts();
             return view('pages.home.page', ['latestPosts' => $latestPostsArray]);
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { // Т.к. конструктор запросов работает на основе PDO,
+                                    // ожидаем соответствующее исключение.
             return view('errors.DBError');
         }
 
