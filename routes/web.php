@@ -13,6 +13,8 @@
 
 Route::get('/', 'Pages\HomepageController@show');
 
+Route::get('/about', 'Pages\AboutController@show');
+
 Route::get('/blogs/{p?}/{q?}', 'Pages\BlogsController@show')->where([
     'p' => '[0-9]+',   // page number
     'q' => '[0-9]+'    // quantity of posts on a page

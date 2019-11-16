@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 
 class AboutController extends Controller {
     public function show(){
-        return "About";
+        return view('pages.about.page');
     }
 }
