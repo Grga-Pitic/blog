@@ -9,6 +9,13 @@ use App\Models\PostModel;
 
 DEFINE('TABLE_NAME', 'post');
 
+/**
+ * Class MySqlBlogRepository
+ * @package App\Repositories\blog
+ *
+ * Реализация интерфейса IBlogRepository, работающая через конструктор запросов (фасад DB).
+ *
+ */
 class MySqlBlogRepository implements IBlogRepository {
     public function getPostById(int $id){
         $result = DB::table(TABLE_NAME)->where('id', $id)->first();
