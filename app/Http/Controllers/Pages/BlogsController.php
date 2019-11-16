@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\blog\base\IBlogRepository;
 use App\Http\Controllers\Ajax\PostListController;
+use PDOException;
 
 class BlogsController extends Controller {
     public function show(Request $request, $p = 0, $q = PostListController::DEFAULT_QUANTITY_ON_PAGE){
@@ -28,12 +29,20 @@ class BlogsController extends Controller {
         $listOfPosts = $repository->getPostList($parametersOfList);
         $postsTotal  = $repository->getCount();
 
-        $listHtmlCode = $listController->show($request, $p, $q);
+        try {
 
-        return view('pages.blogs.page', [
-            'isOldFirst' => $parametersOfList['oldFirst'],
-            'listHtmlCode' => $listHtmlCode
-        ]);
+            $listHtmlCode = $listController->show($request, $p, $q);
+
+            return view('pages.blogs.page', [
+                'isOldFirst' => $parametersOfList['oldFirst'],
+                'listHtmlCode' => $listHtmlCode
+            ]);
+        } catch (PDOException $e) {
+            return view('pages.DBError');
+        }
+
+
+
     }
 
     private function calculatePagesQuantity(int $pageSize, int $postsTotal){
