@@ -13,11 +13,10 @@ class BlogsController extends Controller {
 
         $container = app();
         $listController = $container->make(PostListController::class);
+        $isOldFirls = false;
 
         if($request->input('old-first') == 'true'){
-            $parametersOfList['oldFirst'] = true;
-        } else {
-            $parametersOfList['oldFirst'] = false;
+            $isOldFirls = true;
         }
 
         try {
@@ -25,7 +24,7 @@ class BlogsController extends Controller {
             $listHtmlCode = $listController->show($request, $p, $q);
 
             return view('pages.blogs.page', [
-                'isOldFirst' => $parametersOfList['oldFirst'],
+                'isOldFirst' => $isOldFirls,
                 'listHtmlCode' => $listHtmlCode
             ]);
         } catch (PDOException $e) { // Т.к. конструктор запросов работает на основе PDO,
